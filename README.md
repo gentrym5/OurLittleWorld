@@ -19,7 +19,7 @@ A private, two-person web application. It provides a shared digital space for lo
 ## Monorepo Structure
 
 ```
-Couple-s-Website/
+OurLittleWorld/
 ├── frontend/               Next.js 14 App Router (TypeScript, Tailwind CSS)
 ├── backend/                ASP.NET Core 8 Web API (C#, EF Core, PostgreSQL)
 ├── .github/
