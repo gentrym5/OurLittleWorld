@@ -1,0 +1,133 @@
+# ============================================================
+# Couple's Website — .gitignore
+# Covers: Node.js, .NET, environment files, OS files, build artifacts
+# ============================================================
+
+# -------------------------------------------------------
+# Environment & Secrets — NEVER commit these
+# -------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# .NET appsettings with secrets (Development and Production may contain real values)
+appsettings.Development.json
+appsettings.Production.json
+
+# Keep the base appsettings.json (no secrets) and the placeholder Development/Production files
+# that are explicitly committed as part of scaffolding
+!backend/CouplesWebsite.Api/appsettings.json
+!backend/CouplesWebsite.Api/appsettings.Development.json
+!backend/CouplesWebsite.Api/appsettings.Production.json
+
+# -------------------------------------------------------
+# Node.js / Next.js / Frontend
+# -------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js build output
+.next/
+out/
+
+# Vercel / Netlify deployment cache
+.vercel/
+.netlify/
+
+# TypeScript build cache
+*.tsbuildinfo
+next-env.d.ts
+
+# -------------------------------------------------------
+# .NET / ASP.NET Core / Backend
+# -------------------------------------------------------
+# Build output
+bin/
+obj/
+
+# Visual Studio / Rider user files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+
+# NuGet packages (restored automatically)
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# EF Core migrations snapshot — keep the Migrations folder
+# but exclude generated SQL scripts if any
+*.sql
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# -------------------------------------------------------
+# Docker
+# -------------------------------------------------------
+.dockerignore
+
+# -------------------------------------------------------
+# OS-generated files
+# -------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# -------------------------------------------------------
+# Editor / IDE
+# -------------------------------------------------------
+.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# -------------------------------------------------------
+# Logs
+# -------------------------------------------------------
+logs/
+*.log
+
+# -------------------------------------------------------
+# Internal / agent planning docs — not for public consumption
+# -------------------------------------------------------
+.internal/
+
+# -------------------------------------------------------
+# Misc
+# -------------------------------------------------------
+# Playwright test artifacts
+playwright-report/
+test-results/
+e2e/screenshots/

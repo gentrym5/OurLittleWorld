@@ -1,4 +1,4 @@
-# Our Little World
+# Couple's Website
 
 A private, two-person web application. It provides a shared digital space for logging feelings, answering personal questions together, uploading and browsing photos, preserving memories on a timeliyne, and accessing a password-protected private section.
 

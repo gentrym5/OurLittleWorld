@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>CouplesWebsite.Tests</RootNamespace>
+    <AssemblyName>CouplesWebsite.Tests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- xUnit test framework -->
+    <PackageReference Include="xunit" Version="2.8.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
+    <!-- Microsoft test SDK -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+
+    <!-- Moq for mocking dependencies -->
+    <PackageReference Include="Moq" Version="4.20.70" />
+
+    <!-- EF Core in-memory provider for unit testing DbContext -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4" />
+
+    <!-- ASP.NET Core test host -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.4" />
+
+    <!-- FluentAssertions for readable assertions -->
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+
+    <!-- Code coverage -->
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reference the API project under test -->
+    <ProjectReference Include="..\CouplesWebsite.Api\CouplesWebsite.Api.csproj" />
+  </ItemGroup>
+
+</Project>

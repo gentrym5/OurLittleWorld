@@ -1,0 +1,15 @@
+[build]
+# Use the Dockerfile in the backend directory for the build
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# Health check path — the API exposes GET /health which returns 200 OK
+healthcheckPath = "/health"
+# Railway waits up to 300 seconds for the container to become healthy
+healthcheckTimeout = 300
+# Number of replicas (1 is sufficient for a private two-person site)
+numReplicas = 1
+# Restart policy on failure
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
