@@ -107,7 +107,7 @@ public class PhotosController : ControllerBase
             return NotFound();
 
         // Delete from Cloudinary first, then remove from DB.
-        await _photoStorage.DeleteAsync(photo.PublicId);
+        await _photoStorage.DeleteAsync(photo.PublicId, photo.IsSecure);
 
         _db.Photos.Remove(photo);
         await _db.SaveChangesAsync(ct);

@@ -25,6 +25,7 @@ export default function SecurePhotoGrid({
 }: SecurePhotoGridProps) {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const fetchPhotos = useCallback(async () => {
@@ -33,7 +34,7 @@ export default function SecurePhotoGrid({
       const data = await getSecurePhotos();
       setPhotos(data);
     } catch {
-      // Silently fail — the session expiry case is handled by the page-level gate
+      setFetchError('Could not load photos. Your session may have expired — try logging out and back in.');
     } finally {
       setLoading(false);
     }
@@ -68,6 +69,15 @@ export default function SecurePhotoGrid({
             className="aspect-square p-0"
           />
         ))}
+      </div>
+    );
+  }
+
+  // Fetch error state
+  if (fetchError) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        <p className="font-sans text-body text-text-muted">{fetchError}</p>
       </div>
     );
   }

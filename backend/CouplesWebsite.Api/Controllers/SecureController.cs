@@ -31,11 +31,16 @@ public class SecureController : ControllerBase
         var expiresAt = DateTime.UtcNow.AddHours(CookieExpiryHours);
         var token = _passwordService.GenerateJwt("secure-user", "secure");
 
+        var sameSite = _environment.IsDevelopment()
+            ? SameSiteMode.Strict
+            : SameSiteMode.None;
+        var secure = !_environment.IsDevelopment();
+
         Response.Cookies.Append(CookieName, token, new CookieOptions
         {
             HttpOnly = true,
-            SameSite = SameSiteMode.Strict,
-            Secure = !_environment.IsDevelopment(),
+            SameSite = sameSite,
+            Secure = secure,
             Expires = expiresAt
         });
 
@@ -49,7 +54,7 @@ public class SecureController : ControllerBase
         Response.Cookies.Delete(CookieName, new CookieOptions
         {
             HttpOnly = true,
-            SameSite = SameSiteMode.Strict,
+            SameSite = _environment.IsDevelopment() ? SameSiteMode.Strict : SameSiteMode.None,
             Secure = !_environment.IsDevelopment()
         });
 

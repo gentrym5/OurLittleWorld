@@ -45,9 +45,11 @@ public class CloudinaryPhotoStorageService : IPhotoStorageService
         return (result.SecureUrl.ToString(), result.PublicId);
     }
 
-    public async Task DeleteAsync(string publicId)
+    public async Task DeleteAsync(string publicId, bool isSecure = false)
     {
         var deletionParams = new DeletionParams(publicId);
+        if (isSecure)
+            deletionParams.Type = "authenticated";
         var result = await _cloudinary.DestroyAsync(deletionParams);
 
         if (result.Error != null)
@@ -60,15 +62,9 @@ public class CloudinaryPhotoStorageService : IPhotoStorageService
     {
         // Generate a signed delivery URL for authenticated (secure) photos, valid for 1 hour.
         // Uses Cloudinary's signature-based URL to restrict access.
-        var expiresAt = DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds();
-
-        var authToken = new AuthToken()
-            .Expiration(expiresAt);
-
         return _cloudinary.Api.UrlImgUp
             .Type("authenticated")
             .Signed(true)
-            .AuthToken(authToken)
             .BuildUrl(publicId);
     }
 }
