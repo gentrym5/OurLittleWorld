@@ -28,8 +28,8 @@ export default function TimelinePage() {
     setLoadError(null);
     try {
       const data = await getTimeline();
-      setEntries(data);
-      setHasMore(data.length === 10);
+      setEntries(data.items);
+      setHasMore(data.hasMore);
     } catch {
       setLoadError('Failed to load memories. Please refresh the page.');
     } finally {
@@ -48,8 +48,8 @@ export default function TimelinePage() {
     setLoadingMore(true);
     try {
       const older = await getTimeline(cursor);
-      setEntries((prev) => [...prev, ...older]);
-      setHasMore(older.length === 10);
+      setEntries((prev) => [...prev, ...older.items]);
+      setHasMore(older.hasMore);
     } catch {
       showError('Failed to load earlier memories. Please try again.');
     } finally {

@@ -45,6 +45,12 @@ export interface TimelineEntry {
   timestamp: string;
 }
 
+export interface TimelinePagedResult {
+  items: TimelineEntry[];
+  hasMore: boolean;
+  nextCursor: string | null;
+}
+
 export interface SurpriseDto {
   type: string;
   data: unknown;

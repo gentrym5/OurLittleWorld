@@ -8,6 +8,7 @@ import type {
   Feeling,
   Photo,
   TimelineEntry,
+  TimelinePagedResult,
   SurpriseDto,
   ApiError,
   CreateAnswerRequest,
@@ -181,9 +182,9 @@ export async function logoutSecure(): Promise<void> {
 // Timeline
 // ---------------------------------------------------------------------------
 
-export async function getTimeline(cursor?: string): Promise<TimelineEntry[]> {
-  const params = cursor ? { beforeTimestamp: cursor, limit: 10 } : { limit: 10 };
-  const res = await api.get<TimelineEntry[]>('/api/timeline', { params });
+export async function getTimeline(cursor?: string): Promise<TimelinePagedResult> {
+  const params = cursor ? { cursor, limit: 10 } : { limit: 10 };
+  const res = await api.get<TimelinePagedResult>('/api/timeline', { params });
   return res.data;
 }
 
